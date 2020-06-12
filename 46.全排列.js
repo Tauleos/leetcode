@@ -35,5 +35,27 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
-var permute = function (nums) {};
+var permute = function (nums) {
+	const len = nums.length;
+	const result = [];
+	if (len < 0) return [];
+	back(nums, []);
+
+	function back(nums, track) {
+		//树的分支如果走完的话，证明这一条走完了
+		if (!nums.length) {
+			result.push([...track]);
+			return;
+		}
+		for (let i of nums) {
+			track.push(i);
+			back(
+				nums.filter((n) => n !== i),
+				track
+			);
+			track.pop();
+		}
+	}
+	return result;
+};
 // @lc code=end
