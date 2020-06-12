@@ -1,0 +1,23 @@
+{
+  "name": "leetcode",
+  "version": "1.0.0",
+  "description": "leetccode 解题",
+  "main": "124.二叉树中的最大路径和.js",
+  "dependencies": {
+    "prettier": "^2.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tauleos/leetcode.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tauleos/leetcode/issues"
+  },
+  "homepage": "https://github.com/Tauleos/leetcode#readme"
+}

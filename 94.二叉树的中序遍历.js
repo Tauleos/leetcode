@@ -16,9 +16,9 @@
  * @param {TreeNode} root
  * @return {number[]}
  */
-var inorderTraversal = function(root) {
-  // 基础的递归算法
-  /* const res = [];
+var inorderTraversal = function (root) {
+	// 基础的递归算法
+	/* const res = [];
   function walkTree (node){
     node.left && walkTree(node.left);
     node.val && res.push(node.val);
@@ -26,22 +26,20 @@ var inorderTraversal = function(root) {
   }
   root && walkTree(root);
   return res; */
-  // 迭代算法
-  const stack = [];
-  const res = [];
-  let cur = root;
-  while(!!cur || stack.length){
-    if(!!cur){
-      stack.push(cur);
-      cur = cur.left;
-    }else{
-      cur = stack.pop();
-      res.push(cur.val);
-      cur = cur.right;
-    }
-  }
-  return res;
-
+	// 迭代算法
+	const stack = [];
+	const res = [];
+	let cur = root;
+	while (!!cur || stack.length) {
+		if (!!cur) {
+			stack.push(cur);
+			cur = cur.left;
+		} else {
+			cur = stack.pop();
+			res.push(cur.val);
+			cur = cur.right;
+		}
+	}
+	return res;
 };
 // @lc code=end
-
