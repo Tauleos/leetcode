@@ -50,7 +50,7 @@ var permute = function (nums) {
 		for (let i of nums) {
 			track.push(i);
 			back(
-				nums.filter((n) => n !== i),
+				nums.filter((n) => n !== i), //进入下一层决策树之前去掉已经选过的结果
 				track
 			);
 			track.pop();
