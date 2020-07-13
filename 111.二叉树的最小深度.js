@@ -46,7 +46,6 @@
  * @return {number}
  */
 var minDepth = function (root) {
-	console.log(JSON.stringify(root));
 	if (root === null) return 0;
 	const queue = [root];
 	let depth = 1;
@@ -69,5 +68,12 @@ var minDepth = function (root) {
 	}
 	return depth;
 };
-console.log('result',minDepth({"val":1,"left":{"val":2,"left":{"val":4,"left":null,"right":null},"right":null},"right":{"val":3,"left":null,"right":{"val":5,"left":null,"right":null}}}))
+console.log(
+	'result',
+	minDepth({
+		val: 1,
+		left: { val: 2, left: { val: 4, left: null, right: null }, right: null },
+		right: { val: 3, left: null, right: { val: 5, left: null, right: null } },
+	})
+);
 // @lc code=end
