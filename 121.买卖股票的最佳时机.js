@@ -49,19 +49,24 @@ var maxProfit = function (prices) {
 	//3、1代表持有(持有的时候)，0代表没有股票
 	let dp = [];
 	let n = prices.length;
-	dp[0] = [0, -prices[0]];
-	for (let i = 1; i < n; i++) {
-		dp[i] = [];
+	// dp[0] = [0, -prices[0]];
+	let dp_i_0 = 0,
+		dp_i_1 = -Infinity;
+	for (let i = 0; i < n; i++) {
+		// dp[i] = [];
 		//今天我没有持有股票，有两种可能：
 		// 要么是我昨天就没有持有，然后今天选择 rest，所以我今天还是没有持有；
 		// 要么是我昨天持有股票，但是今天我 sell 了，所以我今天没有持有股票了。
-		dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
-		// 今天我持有股票，有两种可能：
-		// 要么昨天没有持有，今天买了(没有持有说明之前一直没有持有)；要么昨天持有，今天不买
-		dp[i][1] = Math.max(dp[i - 1][1], -prices[i]);
+		// dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
+		// // 今天我持有股票，有两种可能：
+		// // 要么昨天没有持有，今天买了(没有持有说明之前一直没有持有)；要么昨天持有，今天不买
+		// dp[i][1] = Math.max(dp[i - 1][1], -prices[i]);
+		dp_i_0 = Math.max(dp_i_0, dp_i_1 + prices[i]);
+		dp_i_1 = Math.max(dp_i_1, -prices[i]);
+		console.log(dp_i_0, dp_i_1);
 	}
-	console.log(dp);
-	return dp[n - 1][0];
+	// return dp[n - 1][0];
+	return dp_i_0;
 };
 console.log(maxProfit([7, 1, 5, 3, 6, 4]));
 // @lc code=end
