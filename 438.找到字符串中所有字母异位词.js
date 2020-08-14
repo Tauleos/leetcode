@@ -77,12 +77,12 @@ var findAnagrams = function (s, p) {
 		right++;
 		if (need.has(c)) {
 			window.set(c, window.has(c) ? window.get(c) + 1 : 1);
-			console.log('need', window, right, left);
+			// console.log('need', window, right, left);
 			if (window.get(c) === need.get(c)) {
 				valid++;
 			}
 		}
-		console.log('map', valid, need, left, right);
+		// console.log('map', valid, need, left, right);
 		if (right - left >= p.length) {
 			if (valid === need.size) {
 				res.push(left);
@@ -99,5 +99,5 @@ var findAnagrams = function (s, p) {
 	}
 	return res;
 };
-console.log(findAnagrams('baa', 'aa'));
+// console.log(findAnagrams('baa', 'aa'));
 // @lc code=end
