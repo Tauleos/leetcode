@@ -43,5 +43,29 @@
  * @param {number[]} prices
  * @return {number}
  */
-var maxProfit = function (k, prices) {};
+var maxProfit = function (k, prices) {
+	const n = prices.length;
+	if (n === 0) {
+		return 0;
+	}
+	let dp = [];
+	for (let i = 0; i < n; i++) {
+		dp[i] = [];
+
+		for (let j = 1; j <= k; j++) {
+			if (j === 1) {
+				dp[i][j - 1] = [0, -prices[i]];
+			}
+			if (i === 0) {
+				dp[i][j] = [0, -prices[i]];
+				continue;
+			}
+			dp[i][j] = [];
+			dp[i][j][0] = Math.max(dp[i - 1][j][0], dp[i - 1][j][1] + prices[i]);
+			dp[i][j][1] = Math.max(dp[i - 1][j][1], dp[i - 1][j - 1][0] - prices[i]);
+		}
+	}
+	return dp[n - 1][k][0];
+};
+// console.log(maxProfit(2, [2, 4, 1]));
 // @lc code=end
