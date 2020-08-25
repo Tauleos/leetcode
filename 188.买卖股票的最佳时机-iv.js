@@ -45,10 +45,20 @@
  */
 var maxProfit = function (k, prices) {
 	const n = prices.length;
-	if (n === 0) {
+	if (n === 0 || k === 0) {
 		return 0;
 	}
 	let dp = [];
+	if (k > n / 2) {
+		let dp_i_0 = 0,
+			dp_i_1 = -Infinity;
+		for (let i = 0; i < n; i++) {
+			let temp = dp_i_0;
+			dp_i_0 = Math.max(dp_i_0, dp_i_1 + prices[i]);
+			dp_i_1 = Math.max(dp_i_1, temp - prices[i]);
+		}
+		return dp_i_0;
+	}
 	for (let i = 0; i < n; i++) {
 		dp[i] = [];
 
