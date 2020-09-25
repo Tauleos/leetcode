@@ -39,6 +39,50 @@
  * @return {number[][]}
  */
 var threeSum = function (nums) {
-	console.log('234');
+	nums = nums.sort((a, b) => a - b);
+	let n = nums.length;
+	let result = [];
+	for (let i = 0; i < n; i++) {
+		let res = twoSum(nums, i + 1, 0 - nums[i]);
+		for (let v of res) {
+			v.unshift(nums[i]);
+			result.push(v);
+		}
+		while (i < n - 1 && nums[i] == nums[i + 1]) {
+			i++;
+		}
+	}
+	return result;
 };
+
+function twoSum(nums, start, target) {
+	let lo = start;
+	let hi = nums.length - 1;
+	let res = [];
+	while (lo < hi) {
+		let sum = nums[lo] + nums[hi];
+		let left = nums[lo];
+		let right = nums[hi];
+		if (sum < target) {
+			while (lo < hi && nums[lo] == left) {
+				lo++;
+			}
+		} else if (sum > target) {
+			while (lo < hi && nums[hi] == right) {
+				hi--;
+			}
+		} else {
+			res.push([left, right]);
+			while (lo < hi && nums[lo] == left) {
+				lo++;
+			}
+			while (lo < hi && nums[hi] == right) {
+				hi--;
+			}
+		}
+	}
+	return res;
+}
 // @lc code=end
+
+console.log(threeSum([-1, 0, 1, 2, -1, -4, -2, -3, 3, 0, 4]));
