@@ -14,19 +14,19 @@
  * Testcase Example:  '[1,2,5,3,4,null,6]'
  *
  * 给定一个二叉树，原地将它展开为一个单链表。
- * 
- * 
- * 
+ *
+ *
+ *
  * 例如，给定二叉树
- * 
+ *
  * ⁠   1
  * ⁠  / \
  * ⁠ 2   5
  * ⁠/ \   \
  * 3   4   6
- * 
+ *
  * 将其展开为：
- * 
+ *
  * 1
  * ⁠\
  * ⁠ 2
@@ -38,7 +38,7 @@
  * ⁠       5
  * ⁠        \
  * ⁠         6
- * 
+ *
  */
 
 // @lc code=start
@@ -54,8 +54,20 @@
  * @param {TreeNode} root
  * @return {void} Do not return anything, modify root in-place instead.
  */
-var flatten = function(root) {
-    
+var flatten = function (root) {
+	if (root === null) return root;
+	flatten(root.left);
+	flatten(root.right);
+	let left = root.left;
+	let right = root.right;
+
+	root.left = null;
+	root.right = left;
+	let p = root;
+	while (p.right !== null) {
+		p = p.right;
+	}
+	p.right = right;
+	return root;
 };
 // @lc code=end
-
