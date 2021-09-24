@@ -57,15 +57,31 @@ var numSubarraysWithSum = function (nums, goal) {
 	let map = new Map();
 	let res = 0;
 	let sum = 0;
-	//前缀和
-	for (let i of nums) {
-		map.set(sum, (map.get(sum) || 0) + 1);
-		sum += i;
-		res += map.get(sum - goal) || 0;
-		// console.log(map);
+
+	let s = [0];
+	for (let i = 1; i <= nums.length; i++) {
+		s[i] = s[i - 1] + nums[i - 1];
 	}
-	// console.log(map);
-	return res;
+	let cnt = [];
+	for (let i of nums) {
+		let t = i - goal;
+		if (t >= 0) res += cnt[t];
+		cnt[x]++;
+	}
+	//前缀和
+	// for (let i of nums) {
+	// 	//用map纪录前缀和出现的次数
+	// 	map.set(sum, (map.get(sum) || 0) + 1);
+	// 	//计算前缀和
+	// 	sum += i;
+	// 	console.log('sum,i', sum, i, goal);
+	// 	res += map.get(sum - goal) || 0;
+	// 	// console.log(map);
+	// }
+	// // console.log(map);
+	// return res;
 };
-// console.log(numSubarraysWithSum([1, 0, 1, 0, 1], 2));
+// 1，0，1，0，1
+// 0，1，1，2，2
+console.log(numSubarraysWithSum([1, 0, 1, 0, 1], 2));
 // @lc code=end
