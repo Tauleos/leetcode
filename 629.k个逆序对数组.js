@@ -55,6 +55,7 @@ var kInversePairs = function (n, k) {
 	const MOD = 1000000007;
 	const f = new Array(2).fill(0).map(() => new Array(k + 1).fill(0));
 	f[0][0] = 1;
+	//dp[i][j] = dp[i][j-1] + dp[i-1][j] - dp[i-1][j-i]
 	for (let i = 1; i <= n; ++i) {
 		for (let j = 0; j <= k; ++j) {
 			const cur = i & 1,
