@@ -69,14 +69,14 @@ var findAnagrams = function (s, p) {
 		window = new Map(),
 		res = [];
 	for (let i = 0; i < p.length; i++) {
-		const value = need.has(p[i]) ? need.get(p[i]) + 1 : 1;
+		const value = (need.get(p[i]) || 0) + 1;
 		need.set(p[i], value);
 	}
 	while (right < s.length) {
 		const c = s[right];
 		right++;
 		if (need.has(c)) {
-			window.set(c, window.has(c) ? window.get(c) + 1 : 1);
+			window.set(c, (window.get(c) || 0) + 1);
 			// console.log('need', window, right, left);
 			if (window.get(c) === need.get(c)) {
 				valid++;
