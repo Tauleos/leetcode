@@ -67,6 +67,7 @@ var kthSmallestPrimeFraction = function (arr, k) {
 			res.push([arr[i], arr[j]]);
 		}
 	}
+	//不会
 	res.sort((x, y) => x[0] * y[1] - y[0] * x[1]);
 	return res[k - 1];
 };
