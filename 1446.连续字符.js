@@ -68,18 +68,16 @@
  * @return {number}
  */
 var maxPower = function (s) {
-	let cur = 1,
-		pre = s[0];
+	let cur = 1;
 	let max = cur;
 	let n = s.length;
 	for (let i = 1; i < n; i++) {
-		if (s[i] !== pre) {
-			cur = 1;
-			pre = s[i];
-		} else {
+		if (s[i] == s[i - 1]) {
 			cur++;
+			max = Math.max(cur, max);
+		} else {
+			cur = 1;
 		}
-		max = Math.max(cur, max);
 	}
 	return max;
 };
