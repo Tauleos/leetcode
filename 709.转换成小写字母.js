@@ -55,6 +55,7 @@
  * @return {string}
  */
 var toLowerCase = function (s) {
+	// return s.toLowerCase();
 	return s.replace(/[A-Z]+/g, (key) => key.toLowerCase());
 };
 // console.log(toLowerCase('HeLLo'));
