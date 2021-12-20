@@ -86,7 +86,7 @@ var findRadius = function (houses, heaters) {
 	for (let house of houses) {
 		//找每个房子对应的最近的暖气片
 		const i = binarySearch(heaters, house);
-		console.log('i', i);
+		// console.log('i', i);
 		let j = i + 1;
 		let leftDistance = i < 0 ? Number.MAX_VALUE : house - heaters[i];
 		let rightDistance = j >= heaters.length ? Number.MAX_VALUE : heaters[j] - house;
@@ -95,5 +95,5 @@ var findRadius = function (houses, heaters) {
 	}
 	return res;
 };
-console.log(findRadius([1, 2, 3, 4], [1, 4]));
+// console.log(findRadius([1, 2, 3, 4], [1, 4]));
 // @lc code=end
