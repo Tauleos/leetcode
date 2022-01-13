@@ -60,19 +60,34 @@
  * @return {number}
  */
 var dominantIndex = function (nums) {
-	let max = Math.max.apply(null, nums);
-	let idx = -1;
+	// let max = Math.max.apply(null, nums);
+	// let idx = -1;
+	// let n = nums.length;
+	// // console.log(',ax', max, nums);
+	// for (let i = 0; i < n; i++) {
+	// 	if (nums[i] === max) {
+	// 		idx = i;
+	// 	} else if (max < 2 * nums[i]) {
+	// 		return -1;
+	// 	}
+	// 	// console.log('mi,s[i', nums[i]);
+	// }
+	// return idx;
+
+	//纪录最大值和次大值，进行比较
 	let n = nums.length;
-	// console.log(',ax', max, nums);
-	for (let i = 0; i < n; i++) {
-		if (nums[i] === max) {
-			idx = i;
-		} else if (max < 2 * nums[i]) {
-			return -1;
+	if (n == 1) return 0;
+	let a = -1,
+		b = 0;
+	for (let i = 1; i < n; i++) {
+		if (nums[i] > nums[b]) {
+			a = b;
+			b = i;
+		} else if (a == -1 || nums[i] > nums[a]) {
+			a = i;
 		}
-		// console.log('mi,s[i', nums[i]);
 	}
-	return idx;
+	return nums[b] >= nums[a] * 2 ? b : -1;
 };
 // @lc code=end
 // console.log(dominantIndex([3, 6, 1, 0]));
