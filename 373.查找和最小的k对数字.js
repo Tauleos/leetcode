@@ -68,6 +68,7 @@
  * @return {number[][]}
  */
 var kSmallestPairs = function (nums1, nums2, k) {
+	//小顶堆
 	const pq = new PriorityQueue(),
 		res = [];
 	for (let i = 0; i < Math.min(nums1.length, k); i++) {
